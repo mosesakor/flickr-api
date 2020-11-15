@@ -1,0 +1,16 @@
+<h1>Photos Search</h1>
+
+<%= form_with url: '/', local: true, method: :get do |form| %>
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+    <%= form.submit "Search" %>
+<% end %>
+<br>
+
+<% unless @photos.size.zero? %>
+    <% @photos.each do |photo| %>
+        <img src="<%= Flickr.url_q(photo) %>" /><br>
+    <% end %>
+<% else %>
+  <p> The users photostream is empty
+<% end %>
